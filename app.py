@@ -13,6 +13,7 @@ from logging import Formatter, FileHandler
 from forms import *
 from flask_migrate import Migrate
 from datetime import datetime
+from babel.dates import format_datetime
 #----------------------------------------------------------------------------#
 # App Config.
 #----------------------------------------------------------------------------#
@@ -100,7 +101,7 @@ def format_datetime(value, format='medium'):
       format="EEEE MMMM, d, y 'at' h:mma"
   elif format == 'medium':
       format="EE MM, dd, y h:mma"
-  return babel.dates.format_datetime(date, format)
+  return format_datetime(date, format)
 
 app.jinja_env.filters['datetime'] = format_datetime
 
